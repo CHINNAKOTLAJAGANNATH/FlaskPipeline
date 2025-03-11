@@ -11,7 +11,7 @@ pipeline {
             steps {
                 cleanWs()
                 git branch: 'main',
-                    url: 'https://github.com/sirisharamya/FlaskPipeline.git'
+                    url: 'https://github.com/CHINNAKOTLAJAGANNATH/FlaskPipeline.git'
             }
         }
         
