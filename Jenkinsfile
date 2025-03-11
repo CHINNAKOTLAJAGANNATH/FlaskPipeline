@@ -25,7 +25,7 @@ pipeline {
                     // Install dependencies from requirements.txt inside the nested folder
                     bat '''
                         venv\\Scripts\\activate.bat && (
-                            pip install -r simple_flask_app-main/requirements.txt --verbose
+                            pip install -r FlaskPipeline/requirements.txt --verbose
                         )
                     '''
                 }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     // Run pytest inside the nested folder
-                    bat 'venv\\Scripts\\activate.bat && cd simple_flask_app-main && python -m pytest'
+                    bat 'venv\\Scripts\\activate.bat && cd FlaskPipeline && python -m pytest'
                 }
             }
         }
@@ -47,7 +47,7 @@ pipeline {
                     // Create a Windows batch script to run the Flask server
                     bat '''
                         echo @echo off > start_server.bat
-                        echo set FLASK_APP=simple_flask_app-main/app.py >> start_server.bat
+                        echo set FLASK_APP=FlaskPipeline/app.py >> start_server.bat
                         echo set FLASK_ENV=production >> start_server.bat
                         echo call venv\\Scripts\\activate.bat >> start_server.bat
                         echo python -m flask run --host=127.0.0.1 --port=%PORT% >> start_server.bat
